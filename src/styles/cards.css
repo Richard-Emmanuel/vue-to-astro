@@ -1,0 +1,18 @@
+.sl-link-card {
+  width: 100%;
+  max-height: 100px;
+  padding: 0.5rem; /* Or smaller values, e.g., 0.25rem */
+  font-size: 1.5rem;
+  padding-top: 1.3rem;
+  background-color: #1a1919;
+}
+.counter {
+  background-color: #1a1919;
+  width: 30%;
+  max-height: 60px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-style: solid;
+  border-color: grey;
+}
