@@ -62,22 +62,22 @@ export default defineConfig({
             },
           ],
         },
-        // {
-        //   label: "Components In-Depth",
-        //   items: [
-        //     { label: "Registration", slug: "components-in-depth/registration" },
-        //     { label: "Props", slug: "components-in-depth/props" },
-        //     { label: "Events", slug: "components-in-depth/events" },
-        //     {
-        //       label: "Component v-model",
-        //       slug: "components-in-depth/component-v-model",
-        //     },
-        //     {
-        //       label: "Fallthrough Attributes",
-        //       slug: "components-in-depth/fallthrough-attributes",
-        //     },
-        //   ],
-        // },
+        {
+          label: "Components In-Depth",
+          items: [
+            { label: "Registration", slug: "components-in-depth/registration" },
+            { label: "Props", slug: "components-in-depth/props" },
+            { label: "Events", slug: "components-in-depth/events" },
+            {
+              label: "Component v-model",
+              slug: "components-in-depth/component-v-model",
+            },
+            {
+              label: "Fallthrough Attributes",
+              slug: "components-in-depth/fallthrough-attributes",
+            },
+          ],
+        },
 
         // {
         //   label: "Reusability",
