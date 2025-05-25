@@ -9,6 +9,10 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Vue.js",
+      customCss: [
+        // Relative path to your custom CSS file
+        "./src/styles/index.css",
+      ],
       social: [
         {
           icon: "github",
@@ -35,28 +39,28 @@ export default defineConfig({
             { label: "Quick start", slug: "getting-started/quick-start" },
           ],
         },
-        // {
-        //   label: "Essentials",
-        //   items: [
-        //     {
-        //       label: "Creating an Application",
-        //       slug: "essentials/creating-an-application",
-        //     },
-        //     { label: "Template Syntax", slug: "essentials/template-syntax" },
-        //     {
-        //       label: "Reactivity Fundamentals",
-        //       slug: "essentials/reactivity-fundamentals",
-        //     },
-        //     {
-        //       label: "Computed Properties",
-        //       slug: "essentials/computed-properties",
-        //     },
-        //     {
-        //       label: "Class and Style Bindings",
-        //       slug: "essentials/class-and-style-bindings",
-        //     },
-        //   ],
-        // },
+        {
+          label: "Essentials",
+          items: [
+            {
+              label: "Creating an Application",
+              slug: "essentials/creating-an-application",
+            },
+            { label: "Template Syntax", slug: "essentials/template-syntax" },
+            {
+              label: "Reactivity Fundamentals",
+              slug: "essentials/reactivity-fundamentals",
+            },
+            {
+              label: "Computed Properties",
+              slug: "essentials/computed-properties",
+            },
+            {
+              label: "Class and Style Bindings",
+              slug: "essentials/class-and-style-bindings",
+            },
+          ],
+        },
         // {
         //   label: "Components In-Depth",
         //   items: [
