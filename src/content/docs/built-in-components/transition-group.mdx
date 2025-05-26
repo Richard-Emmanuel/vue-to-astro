@@ -57,7 +57,7 @@ Here is an example of applying enter / leave transitions to a `v-for` list using
 
 The above demo has some obvious flaws: when an item is inserted or removed, its surrounding items instantly "jump" into place instead of moving smoothly. We can fix this by adding a few additional CSS rules:
 
-```css{1,13-17}
+```css
 .list-move, /* apply transition to moving elements */
 .list-enter-active,
 .list-leave-active {
@@ -91,7 +91,7 @@ You can also specify custom transition classes for the moving element by passing
 
 By communicating with JavaScript transitions through data attributes, it's also possible to stagger transitions in a list. First, we render the index of an item as a data attribute on the DOM element:
 
-```vue-html{11}
+```vue-html
 <TransitionGroup
   tag="ul"
   :css="false"
