@@ -4,6 +4,8 @@ import starlight from "@astrojs/starlight";
 
 import vue from "@astrojs/vue";
 
+import tailwindcss from "@tailwindcss/vite";
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -11,7 +13,7 @@ export default defineConfig({
       title: "Vue.js",
       customCss: [
         // Relative path to your custom CSS file
-        "./src/styles/index.css",
+        "./src/styles/global.css",
       ],
 
       social: [
@@ -79,107 +81,119 @@ export default defineConfig({
           ],
         },
 
-        // {
-        //   label: "Reusability",
-        //   items: [
-        //     { label: "Composables", slug: "reusability/composables" },
-        //     {
-        //       label: "Custom Directives",
-        //       slug: "reusability/custom-directives",
-        //     },
-        //     { label: "Plugins", slug: "reusability/plugins" },
-        //   ],
-        // },
-        // {
-        //   label: "Built-In Components",
-        //   items: [
-        //     { label: "Transition", slug: "built-in-components/transition" },
-        //     {
-        //       label: "TransitionGroup",
-        //       slug: "built-in-components/transition-group",
-        //     },
-        //     { label: "KeepAlive", slug: "built-in-components/keep-alive" },
-        //     { label: "Teleport", slug: "built-in-components/teleport" },
-        //     { label: "Suspense", slug: "built-in-components/suspense" },
-        //   ],
-        // },
-        // {
-        //   label: "Scaling Up",
-        //   items: [
-        //     {
-        //       label: "Single-File Components",
-        //       slug: "scaling-up/single-file-components",
-        //     },
-        //     { label: "Tooling", slug: "scaling-up/tooling" },
-        //     { label: "Routing", slug: "scaling-up/routing" },
-        //     { label: "State Management", slug: "scaling-up/state-management" },
-        //     { label: "Testing", slug: "scaling-up/testing" },
-        //     {
-        //       label: "Server-Side Rendering (SSR)",
-        //       slug: "scaling-up/server-side-rendering",
-        //     },
-        //   ],
-        // },
+        {
+          label: "Reusability",
+          items: [
+            { label: "Composables", slug: "reusability/composables" },
+            {
+              label: "Custom Directives",
+              slug: "reusability/custom-directives",
+            },
+            { label: "Plugins", slug: "reusability/plugins" },
+          ],
+        },
+        {
+          label: "Built-In Components",
+          items: [
+            { label: "Transition", slug: "built-in-components/transition" },
+            {
+              label: "TransitionGroup",
+              slug: "built-in-components/transition-group",
+            },
+            { label: "KeepAlive", slug: "built-in-components/keep-alive" },
+            { label: "Teleport", slug: "built-in-components/teleport" },
+            { label: "Suspense", slug: "built-in-components/suspense" },
+          ],
+        },
+        {
+          label: "Scaling Up",
+          items: [
+            {
+              label: "Single-File Components",
+              slug: "scaling-up/single-file-components",
+            },
+            { label: "Tooling", slug: "scaling-up/tooling" },
+            { label: "Routing", slug: "scaling-up/routing" },
+            { label: "State Management", slug: "scaling-up/state-management" },
+            { label: "Testing", slug: "scaling-up/testing" },
+            {
+              label: "Server-Side Rendering (SSR)",
+              slug: "scaling-up/server-side-rendering",
+            },
+          ],
+        },
 
-        // {
-        //   label: "Best Practices",
-        //   items: [
-        //     {
-        //       label: "Product Deployment",
-        //       slug: "best-practices/product-deployment",
-        //     },
-        //     { label: "Performance", slug: "best-practices/performance" },
-        //     { label: "Accessibility", slug: "best-practices/accessibility" },
-        //     { label: "Security", slug: "best-practices/security" },
-        //   ],
-        // },
-        // {
-        //   label: "Typescript",
-        //   items: [
-        //     { label: "Overview", slug: "typescript/overview" },
-        //     {
-        //       label: "TS with Composition API",
-        //       slug: "typescript/ts-with-composition-api",
-        //     },
-        //     {
-        //       label: "TS with Options API",
-        //       slug: "typescript/ts-with-options-api",
-        //     },
-        //   ],
-        // },
-        // {
-        //   label: "Extra Topics",
-        //   items: [
-        //     {
-        //       label: "Ways of Using Vue",
-        //       slug: "extra-topics/ways-of-using-vue",
-        //     },
-        //     {
-        //       label: "Composition API FAQ",
-        //       slug: "extra-topics/composition-api-faq",
-        //     },
-        //     {
-        //       label: "Reactivity in Depth",
-        //       slug: "extra-topics/reactivity-in-depth",
-        //     },
-        //     {
-        //       label: "Rendering Mechanism",
-        //       slug: "extra-topics/rendering-mechanism",
-        //     },
-        //     {
-        //       label: "Render Functions & JSX",
-        //       slug: "extra-topics/render-functions-jsx",
-        //     },
-        //   ],
-        // },
+        {
+          label: "Best Practices",
+          items: [
+            {
+              label: "Product Deployment",
+              slug: "best-practices/product-deployment",
+            },
+            { label: "Performance", slug: "best-practices/performance" },
+            { label: "Accessibility", slug: "best-practices/accessibility" },
+            { label: "Security", slug: "best-practices/security" },
+          ],
+        },
+        {
+          label: "Typescript",
+          items: [
+            { label: "Overview", slug: "typescript/overview" },
+            {
+              label: "TS with Composition API",
+              slug: "typescript/composition-api",
+            },
+            {
+              label: "TS with Options API",
+              slug: "typescript/options-api",
+            },
+          ],
+        },
+        {
+          label: "Extra Topics",
+          items: [
+            {
+              label: "Ways of Using Vue",
+              slug: "extra-topics/ways-of-using-vue",
+            },
+            {
+              label: "Composition API FAQ",
+              slug: "extra-topics/composition-api-faq",
+            },
+            {
+              label: "Reactivity in Depth",
+              slug: "extra-topics/reactivity-in-depth",
+            },
+            {
+              label: "Rendering Mechanism",
+              slug: "extra-topics/rendering-mechanism",
+            },
+            {
+              label: "Render Functions & JSX",
+              slug: "extra-topics/render-function",
+            },
+            {
+              label: "Vue and Web Components",
+              slug: "extra-topics/web-components",
+            },
+            {
+              label: "Animation Techniques",
+              slug: "extra-topics/animation",
+            },
+          ],
+        },
       ],
       //   logo
       logo: {
         src: "./src/assets/images/vue-logo.png",
       },
       //   favicon
-      favicon: "./src/assets/images/favicon.svg",
+      favicon: "/favicon.svg",
     }),
     vue(),
   ],
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import SiteMap from './SiteMap.vue'
+import { onMounted } from "vue";
+// import SiteMap from './SiteMap.vue'
 // import NewsLetter from './NewsLetter.vue'
-import { load, data, base } from './sponsors'
-import SponsorsGroup from './SponsorsGroup.vue'
-import VueMasteryModal from './VueMasteryModal.vue'
+import { load, data, base } from "./sponsors";
+// import SponsorsGroup from './SponsorsGroup.vue'
+import VueMasteryModal from "./VueMasteryModal.vue";
 
-onMounted(load)
+onMounted(load);
 </script>
 
 <template>
@@ -18,8 +18,8 @@ onMounted(load)
       <br />JavaScript Framework
     </h1>
     <p class="description">
-      An approachable, performant and versatile framework for building web
-      user interfaces.
+      An approachable, performant and versatile framework for building web user
+      interfaces.
     </p>
     <p class="actions">
       <VueMasteryModal />
@@ -87,22 +87,22 @@ onMounted(load)
     <div class="vt-box">
       <h2>Approachable</h2>
       <p>
-        Builds on top of standard HTML, CSS and JavaScript with intuitive
-        API and world-class documentation.
+        Builds on top of standard HTML, CSS and JavaScript with intuitive API
+        and world-class documentation.
       </p>
     </div>
     <div class="vt-box">
       <h2>Performant</h2>
       <p>
-        Truly reactive, compiler-optimized rendering system that rarely
-        requires manual optimization.
+        Truly reactive, compiler-optimized rendering system that rarely requires
+        manual optimization.
       </p>
     </div>
     <div class="vt-box">
       <h2>Versatile</h2>
       <p>
-        A rich, incrementally adoptable ecosystem that scales between a
-        library and a full-featured framework.
+        A rich, incrementally adoptable ecosystem that scales between a library
+        and a full-featured framework.
       </p>
     </div>
   </section>
@@ -165,18 +165,24 @@ html:not(.dark) .accent,
 }
 
 .actions .security {
-  background: linear-gradient(var(--vt-c-bg-mute), var(--vt-c-bg-mute)) padding-box,
+  background: linear-gradient(var(--vt-c-bg-mute), var(--vt-c-bg-mute))
+      padding-box,
     linear-gradient(45deg, #42d392, #647eff) border-box;
   border: 2px solid transparent;
 }
 
 .actions .security:hover {
-  background: linear-gradient(var(--vt-c-gray-light-4), var(--vt-c-gray-light-4)) padding-box,
+  background: linear-gradient(
+        var(--vt-c-gray-light-4),
+        var(--vt-c-gray-light-4)
+      )
+      padding-box,
     linear-gradient(45deg, #42d392, #647eff) border-box;
 }
 
 .dark .actions .security:hover {
-  background: linear-gradient(var(--vt-c-gray-dark-3), var(--vt-c-gray-dark-3)) padding-box,
+  background: linear-gradient(var(--vt-c-gray-dark-3), var(--vt-c-gray-dark-3))
+      padding-box,
     linear-gradient(45deg, #42d392, #647eff) border-box;
 }
 
