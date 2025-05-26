@@ -175,9 +175,9 @@ let x: string | number = 1;
 
 This can be worked around with an inline type cast:
 
-```vue{6}
+```vue
 <script setup lang="ts">
-let x: string | number = 1
+let x: string | number = 1;
 </script>
 
 <template>
