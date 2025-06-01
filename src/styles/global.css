@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* @import "tailwindcss"; */
 @layer base, starlight, theme, components, utilities;
 
 @import "@astrojs/starlight-tailwind";
@@ -13,14 +13,3 @@
 @import "./style-guide.css";
 @import "./vue-mastery.css";
 @import "./cards.css";
-
-ul,
-ol {
-  list-style: disc outside; /* or `inside` */
-  padding-left: 1.5rem; /*  ensures proper spacing */
-  margin: 1em 0;
-}
-
-li {
-  margin-bottom: 0.5em;
-}
