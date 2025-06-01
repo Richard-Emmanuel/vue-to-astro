@@ -16,7 +16,7 @@ export default defineConfig({
       plugins: [starlightThemeRapide()],
       customCss: [
         // Relative path to your custom CSS file
-        // "./src/styles/global.css",
+        "./src/styles/global.css",
       ],
 
       social: [
