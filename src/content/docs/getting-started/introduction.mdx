@@ -15,7 +15,7 @@ import { ref } from "vue";
     - Upgrading from Vue 2? Check out the [Migration Guide](https://v3-migration.vuejs.org/).
     :::
 
-</Card>
+{" "}
 
 <div class="vue-mastery-link">
   <a href="https://www.vuemastery.com/courses/" target="_blank">
@@ -39,7 +39,11 @@ import { ref } from "vue";
       />
     </div>
   </a>
-</div>
+</div>{" "}
+
+</Card>
+
+---
 
 ## What is Vue?
 
@@ -51,7 +55,7 @@ Here is a minimal example:
 
 <div class="options-api">
 
-```js
+```js {1}
 import { createApp } from "vue";
 
 createApp({
@@ -108,9 +112,9 @@ createApp({
 
 The above example demonstrates the two core features of Vue:
 
-- **Declarative Rendering**: Vue extends standard HTML with a template syntax that allows us to declaratively describe HTML output based on JavaScript state.
+    - **Declarative Rendering**: Vue extends standard HTML with a template syntax that allows us to declaratively describe HTML output based on JavaScript state.
 
-- **Reactivity**: Vue automatically tracks JavaScript state changes and efficiently updates the DOM when changes happen.
+    - **Reactivity**: Vue automatically tracks JavaScript state changes and efficiently updates the DOM when changes happen.
 
 You may already have questions - don't worry. We will cover every little detail in the rest of the documentation. For now, please read along so you can have a high-level understanding of what Vue offers.
 

@@ -1,6 +1,8 @@
 // @ts-check
 import { defineConfig } from "astro/config";
+
 import starlight from "@astrojs/starlight";
+import starlightThemeRapide from "starlight-theme-rapide";
 
 import vue from "@astrojs/vue";
 
@@ -11,9 +13,10 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Vue.js",
+      plugins: [starlightThemeRapide()],
       customCss: [
         // Relative path to your custom CSS file
-        "./src/styles/global.css",
+        // "./src/styles/global.css",
       ],
 
       social: [
