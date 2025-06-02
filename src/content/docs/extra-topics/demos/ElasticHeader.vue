@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import { reactive, computed } from 'vue'
 import dynamics from 'dynamics.js'
 
@@ -108,4 +108,4 @@ function stopDrag() {
   font-size: 2em;
   font-weight: bold;
 }
-</style>
+</style> -->
