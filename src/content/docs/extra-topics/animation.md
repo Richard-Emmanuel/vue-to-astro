@@ -18,20 +18,6 @@ Vue provides the [`<Transition>`](/guide/built-ins/transition) and [`<Transition
 
 For elements that are not entering / leaving the DOM, we can trigger animations by dynamically adding a CSS class:
 
-<div class="composition-api">
-
-```js
-const disabled = ref(false);
-
-function warnDisabled() {
-  disabled.value = true;
-  setTimeout(() => {
-    disabled.value = false;
-  }, 1500);
-}
-```
-
-</div>
 <div class="options-api">
 
 ```js
@@ -97,17 +83,6 @@ export default {
 
 Some transition effects can be applied by interpolating values, for instance by binding a style to an element while an interaction occurs. Take this example for instance:
 
-<div class="composition-api">
-
-```js
-const x = ref(0);
-
-function onMousemove(e) {
-  x.value = e.clientX;
-}
-```
-
-</div>
 <div class="options-api">
 
 ```js
@@ -154,28 +129,6 @@ In addition to color, you can also use style bindings to animate transform, widt
 
 With some creativity, we can use watchers to animate anything based on some numerical state. For example, we can animate the number itself:
 
-<div class="composition-api">
-
-```js
-import { ref, reactive, watch } from "vue";
-import gsap from "gsap";
-
-const number = ref(0);
-const tweened = reactive({
-  number: 0,
-});
-
-watch(number, (n) => {
-  gsap.to(tweened, { duration: 0.5, number: Number(n) || 0 });
-});
-```
-
-```vue-html
-Type a number: <input v-model.number="number" />
-<p>{{ tweened.number.toFixed(0) }}</p>
-```
-
-</div>
 <div class="options-api">
 
 ```js
@@ -205,11 +158,6 @@ Type a number: <input v-model.number="number" />
 
 <AnimateWatcher />
 
-<div class="composition-api">
-
-[Try it in the Playground](https://play.vuejs.org/#eNpNUstygzAM/BWNLyEzBDKd6YWSdHrpsacefSGgJG7xY7BImhL+vTKv9ILllXYlr+jEm3PJpUWRidyXjXIEHql1e2mUdrYh6KDBY8yfoiR1wRiuBZVn6OHYWA0r5q6W2pMv3ISHkBPSlNZ4AtPqAzawC2LRdj3DdEU0WA34qB910sBUnsFWmp6LpRmaRo9UHMLIrGG3h4EBQ/OEbDRpxjx51TYFKWtYKHmOF9WP4Qzs+x22EDoA9NLwmaejC/x+vhBqVxeEfAPIK3WBsi6830lRobZSDDjA580hFIt8roxrCS4bbSuskxFmzhhIAenEy92id1CnzZzfd91szETmZ72rH6zYOej7PA3rYXrKE3GUp//m5KunWx3C5CE6enS0hjZXVKczZXCwdfWyoF79YgZPqBliJ9iGSUTEYlzuRrO9X94a/lUGNTklvBTZvAMpwhYCIMWZyPksTVvjvk9JaXUacq9sSlujFJPnvej/AElH3FQ=)
-
-</div>
 <div class="options-api">
 
 [Try it in the Playground](https://play.vuejs.org/#eNpNUctugzAQ/JWVLyESj6hSL5Sm6qXHnnr0xYENuAXbwus8Svj3GlxIJEvendHMvgb2bkx6cshyVtiyl4b2XMnO6J6gtsLAsdcdbKZwwxVXeJmpCo/CtQQDVwCVIBFtQwzQI7leLRmAct0B+xx28YLQGVFh5aGAjNM3zvRZUNnkizhII7V6w9xTSjqiRtoYBqhcL0hq5c3S5/hu/blKbzfYwbh9LMWVf0W2zusTws60gnDK6OtqEMTaeSGVcQSnpNMVtmmAXzkLAWeQzarCQNkKaz1zkHWysPthWNryjX/IC1bRbgvjWGTG64rssbQqLF3bKUzvHmH6o1aUnFHWDeVw0G31sqJW/mIOT9h5KEw2m7CYhUsmnV/at9XKX3n24v+E5WxdNmfTbieAs4bI2DzLnDI/dVrqLpu4Nz+/a5GzZYls/AM3dcFx)

@@ -14,6 +14,9 @@ import VueSchoolLink from "/src/components/VueSchoolLink.vue";
 
 A Vue component needs to be "registered" so that Vue knows where to locate its implementation when it is encountered in a template. There are two ways to register components: global and local.
 
+---
+
+<br />
 ## Global Registration
 
 We can make components available globally in the current [Vue application](/guide/essentials/application) using the `.component()` method:
@@ -61,6 +64,9 @@ Globally registered components can be used in the template of any component with
 
 This even applies to all subcomponents, meaning all three of these components will also be available _inside each other_.
 
+---
+
+<br />
 ## Local Registration
 
 While convenient, global registration has a few drawbacks:
@@ -71,36 +77,6 @@ While convenient, global registration has a few drawbacks:
 
 Local registration scopes the availability of the registered components to the current component only. It makes the dependency relationship more explicit, and is more tree-shaking friendly.
 
-<div class="composition-api">
-
-When using SFC with `<script setup>`, imported components can be locally used without registration:
-
-```vue
-<script setup>
-import ComponentA from "./ComponentA.vue";
-</script>
-
-<template>
-  <ComponentA />
-</template>
-```
-
-In non-`<script setup>`, you will need to use the `components` option:
-
-```js
-import ComponentA from "./ComponentA.js";
-
-export default {
-  components: {
-    ComponentA,
-  },
-  setup() {
-    // ...
-  },
-};
-```
-
-</div>
 <div class="options-api">
 
 Local registration is done using the `components` option:
@@ -136,6 +112,9 @@ export default {
 
 Note that **locally registered components are _not_ also available in descendant components**. In this case, `ComponentA` will be made available to the current component only, not any of its child or descendant components.
 
+---
+
+<br />
 ## Component Name Casing
 
 Throughout the guide, we are using PascalCase names when registering components. This is because:

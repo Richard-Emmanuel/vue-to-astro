@@ -64,26 +64,6 @@ export default {
 ```
 
 </div>
-<div class="composition-api">
-
-```vue
-<script setup>
-import { ref, watch } from "vue";
-import { useRoute } from "vue-router";
-
-const route = useRoute();
-const backToTop = ref();
-
-watch(
-  () => route.path,
-  () => {
-    backToTop.value.focus();
-  }
-);
-</script>
-```
-
-</div>
 
 [Read documentation on skip link to main content](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
 

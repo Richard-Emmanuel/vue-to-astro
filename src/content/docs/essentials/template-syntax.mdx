@@ -3,12 +3,28 @@ title: Template Syntax
 description: Vue's template syntax allows you to declaratively bind the rendered DOM to the underlying component instance's data.
 ---
 
-Vue uses an HTML-based template syntax that allows you to declaratively bind the rendered DOM to the underlying component instance's data. All Vue templates are syntactically valid HTML that can be parsed by spec-compliant browsers and HTML parsers.
+import { Card } from "@astrojs/starlight/components";
+import VueSchoolLink from "/src/components/VueSchoolLink.vue";
+import RawHtmlDemo from "./RawHtmlDemo/RawHtmlDemo.vue";
+
+<VueSchoolLink
+  href="https://scrimba.com/links/vue-template-syntax"
+  title="Watch an interactive video lesson on Scrimba"
+/>
+
+Vue uses an HTML-based template syntax that allows you to declaratively bind the
+rendered DOM to the underlying component instance's data. All Vue templates are syntactically
+valid HTML that can be parsed by spec-compliant browsers and HTML parsers.
 
 Under the hood, Vue compiles the templates into highly-optimized JavaScript code. Combined with the reactivity system, Vue can intelligently figure out the minimal number of components to re-render and apply the minimal amount of DOM manipulations when the app state changes.
 
 If you are familiar with Virtual DOM concepts and prefer the raw power of JavaScript, you can also [directly write render functions](/guide/extras/render-function) instead of templates, with optional JSX support. However, do note that they do not enjoy the same level of compile-time optimizations as templates.
 
+<br />
+
+---
+
+<br />
 ## Text Interpolation
 
 The most basic form of data binding is text interpolation using the "Mustache" syntax (double curly braces):
@@ -19,6 +35,11 @@ The most basic form of data binding is text interpolation using the "Mustache" s
 
 The mustache tag will be replaced with the value of the `msg` property [from the corresponding component instance](/guide/essentials/reactivity-fundamentals#declaring-reactive-state). It will also be updated whenever the `msg` property changes.
 
+<br />
+
+---
+
+<br />
 ## Raw HTML
 
 The double mustaches interpret the data as plain text, not HTML. In order to output real HTML, you will need to use the [`v-html` directive](/api/built-in-directives#v-html):
@@ -28,24 +49,14 @@ The double mustaches interpret the data as plain text, not HTML. In order to out
 <p>Using v-html directive: <span v-html="rawHtml"></span></p>
 ```
 
-<script setup>
-  const rawHtml = '<span style="color: red"></span>'
-</script>
-
-{" "}
-
-<div class="demo ">
-  <p>Using text interpolation: `{{ rawHtml }}`</p>
-  <p>
-    Using v-html directive:{" "}
-    <span v-html="rawHtml" style="color: red">
-      {" "}
-      This should be red.
-    </span>
-  </p>
-</div>
-
-Here we're encountering something new. The `v-html` attribute you're seeing is called a **directive**. Directives are prefixed with `v-` to indicate that they are special attributes provided by Vue, and as you may have guessed, they apply special reactive behavior to the rendered DOM. Here, we're basically saying "keep this element's inner HTML up-to-date with the `rawHtml` property on the current active instance."
+<Card class="card">
+  <RawHtmlDemo />
+</Card>
+Here we're encountering something new. The `v-html` attribute you're seeing is called
+a **directive**. Directives are prefixed with `v-` to indicate that they are special
+attributes provided by Vue, and as you may have guessed, they apply special reactive
+behavior to the rendered DOM. Here, we're basically saying "keep this element's inner
+HTML up-to-date with the `rawHtml` property on the current active instance."
 
 The contents of the `span` will be replaced with the value of the `rawHtml` property, interpreted as plain HTML - data bindings are ignored. Note that you cannot use `v-html` to compose template partials, because Vue is not a string-based templating engine. Instead, components are preferred as the fundamental unit for UI reuse and composition.
 
@@ -53,6 +64,11 @@ The contents of the `span` will be replaced with the value of the `rawHtml` prop
 Dynamically rendering arbitrary HTML on your website can be very dangerous because it can easily lead to [XSS vulnerabilities](https://en.wikipedia.org/wiki/Cross-site_scripting). Only use `v-html` on trusted content and **never** on user-provided content.
 :::
 
+<br />
+
+---
+
+<br />
 ## Attribute Bindings
 
 Mustaches cannot be used inside HTML attributes. Instead, use a [`v-bind` directive](/api/built-in-directives#v-bind):
@@ -107,17 +123,6 @@ The `disabled` attribute will be included if `isButtonDisabled` has a [truthy va
 
 If you have a JavaScript object representing multiple attributes that looks like this:
 
-<div class="composition-api">
-
-```js
-const objectOfAttrs = {
-  id: "container",
-  class: "wrapper",
-  style: "background-color:green",
-};
-```
-
-</div>
 <div class="options-api">
 
 ```js
@@ -139,6 +144,11 @@ You can bind them to a single element by using `v-bind` without an argument:
 <div v-bind="objectOfAttrs"></div>
 ```
 
+<br />
+
+---
+
+<br />
 ## Using JavaScript Expressions
 
 So far we've only been binding to simple property keys in our templates. But Vue actually supports the full power of JavaScript expressions inside all data bindings:
@@ -194,6 +204,9 @@ Template expressions are sandboxed and only have access to a [restricted list of
 
 Globals not explicitly included in the list, for example user-attached properties on `window`, will not be accessible in template expressions. You can, however, explicitly define additional globals for all Vue expressions by adding them to [`app.config.globalProperties`](/api/application#app-config-globalproperties).
 
+---
+
+<br />
 ## Directives
 
 Directives are special attributes with the `v-` prefix. Vue provides a number of [built-in directives](/api/built-in-directives), including `v-html` and `v-bind` which we have introduced above.

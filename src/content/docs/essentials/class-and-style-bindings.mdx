@@ -7,18 +7,14 @@ import VueSchoolLink from "/src/components/VueSchoolLink.vue";
 
 A common need for data binding is manipulating an element's class list and inline styles. Since `class` and `style` are both attributes, we can use `v-bind` to assign them a string value dynamically, much like with other attributes. However, trying to generate those values using string concatenation can be annoying and error-prone. For this reason, Vue provides special enhancements when `v-bind` is used with `class` and `style`. In addition to strings, the expressions can also evaluate to objects or arrays.
 
+---
+
+<br />
 ## Binding HTML Classes
 
 <div class="options-api">
   <VueSchoolLink
     href="https://vueschool.io/lessons/dynamic-css-classes-with-vue-3"
-    title="Free Vue.js Dynamic CSS Classes Lesson"
-  />
-</div>
-
-<div class="composition-api">
-  <VueSchoolLink
-    href="https://vueschool.io/lessons/vue-fundamentals-capi-dynamic-css-classes-with-vue"
     title="Free Vue.js Dynamic CSS Classes Lesson"
   />
 </div>
@@ -34,15 +30,6 @@ We can pass an object to `:class` (short for `v-bind:class`) to dynamically togg
 The above syntax means the presence of the `active` class will be determined by the [truthiness](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) of the data property `isActive`.
 
 You can have multiple classes toggled by having more fields in the object. In addition, the `:class` directive can also co-exist with the plain `class` attribute. So given the following state:
-
-<div class="composition-api">
-
-```js
-const isActive = ref(true);
-const hasError = ref(false);
-```
-
-</div>
 
 <div class="options-api">
 
@@ -76,17 +63,6 @@ When `isActive` or `hasError` changes, the class list will be updated accordingl
 
 The bound object doesn't have to be inline:
 
-<div class="composition-api">
-
-```js
-const classObject = reactive({
-  active: true,
-  "text-danger": false,
-});
-```
-
-</div>
-
 <div class="options-api">
 
 ```js
@@ -113,20 +89,6 @@ This will render:
 ```
 
 We can also bind to a [computed property](./computed) that returns an object. This is a common and powerful pattern:
-
-<div class="composition-api">
-
-```js
-const isActive = ref(true);
-const error = ref(null);
-
-const classObject = computed(() => ({
-  active: isActive.value && !error.value,
-  "text-danger": error.value && error.value.type === "fatal",
-}));
-```
-
-</div>
 
 <div class="options-api">
 
@@ -156,15 +118,6 @@ computed: {
 ### Binding to Arrays
 
 We can bind `:class` to an array to apply a list of classes:
-
-<div class="composition-api">
-
-```js
-const activeClass = ref("active");
-const errorClass = ref("text-danger");
-```
-
-</div>
 
 <div class="options-api">
 
@@ -262,20 +215,14 @@ Will render:
 
 You can learn more about component attribute inheritance in [Fallthrough Attributes](/guide/components/attrs) section.
 
+---
+
+<br />
 ## Binding Inline Styles
 
 ### Binding to Objects
 
 `:style` supports binding to JavaScript object values - it corresponds to an [HTML element's `style` property](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style):
-
-<div class="composition-api">
-
-```js
-const activeColor = ref("red");
-const fontSize = ref(30);
-```
-
-</div>
 
 <div class="options-api">
 
@@ -301,17 +248,6 @@ Although camelCase keys are recommended, `:style` also supports kebab-cased CSS 
 ```
 
 It is often a good idea to bind to a style object directly so that the template is cleaner:
-
-<div class="composition-api">
-
-```js
-const styleObject = reactive({
-  color: "red",
-  fontSize: "30px",
-});
-```
-
-</div>
 
 <div class="options-api">
 

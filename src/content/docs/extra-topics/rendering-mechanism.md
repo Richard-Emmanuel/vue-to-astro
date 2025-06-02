@@ -4,6 +4,9 @@ description: Rendering Mechanism
 ---
 
 How does Vue take a template and turn it into actual DOM nodes? How does Vue update those DOM nodes efficiently? We will attempt to shed some light on these questions here by diving into Vue's internal rendering mechanism.
+<br />
+
+---
 
 ## Virtual DOM
 
@@ -32,6 +35,9 @@ A runtime renderer can walk a virtual DOM tree and construct a real DOM tree fro
 If we have two copies of virtual DOM trees, the renderer can also walk and compare the two trees, figuring out the differences, and apply those changes to the actual DOM. This process is called **patch**, also known as "diffing" or "reconciliation".
 
 The main benefit of virtual DOM is that it gives the developer the ability to programmatically create, inspect and compose desired UI structures in a declarative way, while leaving the direct DOM manipulation to the renderer.
+<br />
+
+---
 
 ## Render Pipeline
 
@@ -46,6 +52,9 @@ At the high level, this is what happens when a Vue component is mounted:
 ![render pipeline](./images/render-pipeline.png)
 
 <!-- https://www.figma.com/file/elViLsnxGJ9lsQVsuhwqxM/Rendering-Mechanism -->
+<br />
+
+---
 
 ## Templates vs. Render Functions
 
@@ -58,6 +67,9 @@ So why does Vue recommend templates by default? There are a number of reasons:
 2. Templates are easier to statically analyze due to their more deterministic syntax. This allows Vue's template compiler to apply many compile-time optimizations to improve the performance of the virtual DOM (which we will discuss below).
 
 In practice, templates are sufficient for most use cases in applications. Render functions are typically only used in reusable components that need to deal with highly dynamic rendering logic. Render function usage is discussed in more detail in [Render Functions & JSX](./render-function).
+<br />
+
+---
 
 ## Compiler-Informed Virtual DOM
 
@@ -71,7 +83,7 @@ Below, we will discuss a few major optimizations done by the Vue template compil
 
 Quite often there will be parts in a template that do not contain any dynamic bindings:
 
-```vue-html
+```vue-html {2,3}
 <div>
   <div>foo</div> <!-- cached -->
   <div>bar</div> <!-- cached -->
@@ -169,7 +181,7 @@ Conceptually, a "block" is a part of the template that has stable inner structur
 
 Each block tracks any descendant nodes (not just direct children) that have patch flags. For example:
 
-```vue-html
+```vue-html {3,5}
 <div> <!-- root block -->
   <div>...</div>         <!-- not tracked -->
   <div :id="id"></div>   <!-- tracked -->

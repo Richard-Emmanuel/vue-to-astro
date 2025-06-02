@@ -1,17 +1,17 @@
 <script setup>
-import { ref } from 'vue'
-import { cells, evalCell } from './spreadSheetStore.js'
+import { ref } from "vue";
+import { cells, evalCell } from "./spreadSheetStore.js";
 
 const props = defineProps({
   c: Number,
-  r: Number
-})
+  r: Number,
+});
 
-const editing = ref(false)
+const editing = ref(false);
 
 function update(e) {
-  editing.value = false
-  cells[props.c][props.r] = e.target.value.trim()
+  editing.value = false;
+  cells[props.c][props.r] = e.target.value.trim();
 }
 </script>
 
@@ -29,7 +29,8 @@ function update(e) {
 </template>
 
 <style scoped>
-.cell, .cell input {
+.cell,
+.cell input {
   height: 1.5em;
   line-height: 1.5;
   font-size: 15px;

@@ -3,6 +3,10 @@ title: Creating an Application
 description: Learn how to create a new Starlight application.
 ---
 
+<br />
+
+---
+
 ## The application instance
 
 Every Vue application starts by creating a new **application instance** with the [`createApp`](/api/application#createapp) function:
@@ -14,6 +18,10 @@ const app = createApp({
   /* root component options */
 });
 ```
+
+<br />
+
+---
 
 ## The Root Component
 
@@ -43,6 +51,12 @@ App (root component)
 ```
 
 In later sections of the guide, we will discuss how to define and compose multiple components together. Before that, we will focus on what happens inside a single component.
+
+<br />
+
+---
+
+<br />
 
 ## Mounting the App
 
@@ -88,6 +102,11 @@ Vue will automatically use the container's `innerHTML` as the template if the ro
 
 In-DOM templates are often used in applications that are [using Vue without a build step](/guide/quick-start.html#using-vue-from-cdn). They can also be used in conjunction with server-side frameworks, where the root template might be generated dynamically by the server.
 
+<br />
+
+---
+
+<br />
 ## App Configurations
 
 The application instance exposes a `.config` object that allows us to configure a few app-level options, for example, defining an app-level error handler that captures errors from all descendant components:

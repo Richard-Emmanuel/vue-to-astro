@@ -7,6 +7,10 @@ import { Tabs, TabItem } from "@astrojs/starlight/components";
 import { Card } from "@astrojs/starlight/components";
 import { Aside } from "@astrojs/starlight/components";
 
+<br />
+
+---
+
 ## Try Vue Online
 
 - To quickly get a taste of Vue, you can try it directly in our [Playground](https://play.vuejs.org/#eNo9jcEKwjAMhl/lt5fpQYfXUQfefAMvvRQbddC1pUuHUPrudg4HIcmXjyRZXEM4zYlEJ+T0iEPgXjn6BB8Zhp46WUZWDjCa9f6w9kAkTtH9CRinV4fmRtZ63H20Ztesqiylphqy3R5UYBqD1UyVAPk+9zkvV1CKbCv9poMLiTEfR2/IXpSoXomqZLtti/IFwVtA9A==).
@@ -14,6 +18,9 @@ import { Aside } from "@astrojs/starlight/components";
 - If you prefer a plain HTML setup without any build steps, you can use this [JSFiddle](https://jsfiddle.net/yyx990803/2ke1ab0z/) as your starting point.
 
 - If you are already familiar with Node.js and the concept of build tools, you can also try a complete build setup right within your browser on [StackBlitz](https://vite.new/vue).
+  <br />
+
+---
 
 ## Creating a Vue Application
 
@@ -68,16 +75,13 @@ This command will install and execute [create-vue](https://github.com/vuejs/crea
 <div class="language-sh">
   <pre>
     <code>
-      <span style="color:var(--vt-c-green);">✔</span> 
-      <span style="color:#A6ACCD;">
-        Project name:
+      <span style="color:var(--vt-c-green);">✔</span><span style="color:#A6ACCD;"> Project name:</span>
         <span style="color:#888;">
           … <span style="color:#89DDFF;">&lt;</span>
           <span style="color:#888;">your-project-name</span>
           <span style="color:#89DDFF;">&gt;</span>
         </span>
-      </span>
-
+      
       <span style="color:var(--vt-c-green);">✔</span>
       <span style="color:#A6ACCD;"> Add TypeScript?</span>
       <span style="color:#888;">
@@ -235,6 +239,10 @@ This will create a production-ready build of your app in the project's `./dist` 
 
 [Next Steps >](#next-steps)
 
+<br />
+
+---
+
 ## Using Vue from CDN
 
 You can use Vue directly from a CDN via a script tag:
@@ -275,42 +283,13 @@ The above link loads the _global build_ of Vue, where all top-level APIs are exp
 
 </div>
 
-<div class="composition-api">
-
-```html
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
-<div id="app">{{ message }}</div>
-
-<script>
-  const { createApp, ref } = Vue;
-
-  createApp({
-    setup() {
-      const message = ref("Hello vue!");
-      return {
-        message,
-      };
-    },
-  }).mount("#app");
-</script>
-```
-
-[CodePen Demo >](https://codepen.io/vuejs-examples/pen/eYQpQEG)
-
-:::tip
-Many of the examples for Composition API throughout the guide will be using the `<script setup>` syntax, which requires build tools. If you intend to use Composition API without a build step, consult the usage of the [`setup()` option](/api/composition-api-setup).
-:::
-
-</div>
-
 ### Using the ES Module Build
 
 Throughout the rest of the documentation, we will be primarily using [ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) syntax. Most modern browsers now support ES modules natively, so we can use Vue from a CDN via native ES modules like this:
 
 <div class="options-api">
 
-```html
+```html {3,4}
 <div id="app">{{ message }}</div>
 
 <script type="module">
@@ -328,40 +307,11 @@ Throughout the rest of the documentation, we will be primarily using [ES modules
 
 </div>
 
-<div class="composition-api">
-
-```html
-<div id="app">{{ message }}</div>
-
-<script type="module">
-  import {
-    createApp,
-    ref,
-  } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
-
-  createApp({
-    setup() {
-      const message = ref("Hello Vue!");
-      return {
-        message,
-      };
-    },
-  }).mount("#app");
-</script>
-```
-
-</div>
-
 Notice that we are using `<script type="module">`, and the imported CDN URL is pointing to the **ES modules build** of Vue instead.
 
 <div class="options-api">
 
 [CodePen Demo >](https://codepen.io/vuejs-examples/pen/VwVYVZO)
-
-</div>
-<div class="composition-api">
-
-[CodePen Demo >](https://codepen.io/vuejs-examples/pen/MWzazEv)
 
 </div>
 
@@ -377,7 +327,7 @@ We can teach the browser where to locate the `vue` import by using [Import Maps]
 
 <div class="options-api">
 
-```html
+```html {1-7,12}
 <script type="importmap">
   {
     "imports": {
@@ -405,40 +355,7 @@ We can teach the browser where to locate the `vue` import by using [Import Maps]
 
 </div>
 
-<div class="composition-api">
-
-```html
-<script type="importmap">
-  {
-    "imports": {
-      "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
-    }
-  }
-</script>
-
-<div id="app">{{ message }}</div>
-
-<script type="module">
-  import { createApp, ref } from "vue";
-
-  createApp({
-    setup() {
-      const message = ref("Hello Vue!");
-      return {
-        message,
-      };
-    },
-  }).mount("#app");
-</script>
-```
-
-[CodePen Demo >](https://codepen.io/vuejs-examples/pen/YzRyRYM)
-
-</div>
-
 You can also add entries for other dependencies to the import map - but make sure they point to the ES modules version of the library you intend to use.
-
-<Card>
 
 :::tip[Import Maps Browser Support]
 
@@ -449,16 +366,13 @@ in Safari 16.4+.
 
 :::
 
-</Card>
+<br />
 
-<Card >
 :::caution[Notes on Production Use]
 The examples so far are using the development build of Vue - if you intend to use Vue from a CDN in production, make sure to check out the [Production Deployment Guide](/guide/best-practices/production-deployment#without-build-tools).
 
 While it is possible to use Vue without a build system, an alternative approach to consider is using [`vuejs/petite-vue`](https://github.com/vuejs/petite-vue) that could better suit the context where [`jquery/jquery`](https://github.com/jquery/jquery) (in the past) or [`alpinejs/alpine`](https://github.com/alpinejs/alpine) (in the present) might be used instead.
 :::
-
-</Card >
 
 ### Splitting Up the Modules
 
@@ -491,22 +405,7 @@ export default {
 
 </div>
 
-<br/>
-<div class="composition-api">
-
-```js
-// my-component.js
-import { ref } from "vue";
-export default {
-  setup() {
-    const count = ref(0);
-    return { count };
-  },
-  template: `<div>Count is: {{ count }}</div>`,
-};
-```
-
-</div>
+<br />
 
 If you directly open the above `index.html` in your browser, you will find that it throws an error because ES modules cannot work over the `file://` protocol, which is the protocol the browser uses when you open a local file.
 
@@ -516,12 +415,16 @@ To start a local HTTP server, first make sure you have [Node.js](https://nodejs.
 
 You may have noticed that the imported component's template is inlined as a JavaScript string. If you are using VS Code, you can install the [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) extension and prefix the strings with a `/*html*/` comment to get syntax highlighting for them.
 
+<br />
+
+---
+
 ## Next Steps
 
 If you skipped the [Introduction](/guide/introduction), we strongly recommend reading it before moving on to the rest of the documentation.
 
 <div class="vt-box-container next-steps">
-  <Card title="Continue with the Guide" class="next-steps-link">
+  <Card title="Continue with the Guide" class="next-steps-link card">
     <a class="vt-box" href="/guide/essentials/application.html">
       <p class="next-steps-link"></p>
       <p class="next-steps-caption">
@@ -530,7 +433,7 @@ If you skipped the [Introduction](/guide/introduction), we strongly recommend re
       </p>
     </a>
   </Card>
-  <Card title="Try the Tutorial" class="next-steps-link">
+  <Card title="Try the Tutorial" class="next-steps-link card">
     <a class="vt-box" href="/tutorial/">
       <p class="next-steps-link"></p>
       <p class="next-steps-caption">
@@ -538,7 +441,7 @@ If you skipped the [Introduction](/guide/introduction), we strongly recommend re
       </p>
     </a>
   </Card>
-  <Card title="Check out the Examples" class="next-steps-link">
+  <Card title="Check out the Examples" class="next-steps-link card">
     <a class="vt-box" href="/examples/">
       <p class="next-steps-link"></p>
       <p class="next-steps-caption">

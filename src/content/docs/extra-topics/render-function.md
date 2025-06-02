@@ -77,54 +77,6 @@ The full `VNode` interface contains many other internal properties, but it is st
 
 ### Declaring Render Functions
 
-<div class="composition-api">
-
-When using templates with Composition API, the return value of the `setup()` hook is used to expose data to the template. When using render functions, however, we can directly return the render function instead:
-
-```js
-import { ref, h } from "vue";
-
-export default {
-  props: {
-    /* ... */
-  },
-  setup(props) {
-    const count = ref(1);
-
-    // return the render function
-    return () => h("div", props.msg + count.value);
-  },
-};
-```
-
-The render function is declared inside `setup()` so it naturally has access to the props and any reactive state declared in the same scope.
-
-In addition to returning a single vnode, you can also return strings or arrays:
-
-```js
-export default {
-  setup() {
-    return () => "hello world!";
-  },
-};
-```
-
-```js
-import { h } from "vue";
-
-export default {
-  setup() {
-    // use an array to return multiple root nodes
-    return () => [h("div"), h("div"), h("div")];
-  },
-};
-```
-
-:::tip
-Make sure to return a function instead of directly returning values! The `setup()` function is called only once per component, while the returned render function will be called multiple times.
-:::
-
-</div>
 <div class="options-api">
 
 We can declare render functions using the `render` option:
@@ -267,17 +219,6 @@ Template:
 
 Equivalent render function / JSX:
 
-<div class="composition-api">
-
-```js
-h("div", [ok.value ? h("div", "yes") : h("span", "no")]);
-```
-
-```jsx
-<div>{ok.value ? <div>yes</div> : <span>no</span>}</div>
-```
-
-</div>
 <div class="options-api">
 
 ```js
@@ -304,27 +245,6 @@ Template:
 
 Equivalent render function / JSX:
 
-<div class="composition-api">
-
-```js
-h(
-  "ul",
-  // assuming `items` is a ref with array value
-  items.value.map(({ id, text }) => {
-    return h("li", { key: id }, text);
-  })
-);
-```
-
-```jsx
-<ul>
-  {items.value.map(({ id, text }) => {
-    return <li key={id}>{text}</li>;
-  })}
-</ul>
-```
-
-</div>
 <div class="options-api">
 
 ```js
@@ -461,43 +381,6 @@ If a component is registered by name and cannot be imported directly (for exampl
 
 ### Rendering Slots
 
-<div class="composition-api">
-
-In render functions, slots can be accessed from the `setup()` context. Each slot on the `slots` object is a **function that returns an array of vnodes**:
-
-```js
-export default {
-  props: ["message"],
-  setup(props, { slots }) {
-    return () => [
-      // default slot:
-      // <div><slot /></div>
-      h("div", slots.default()),
-
-      // named slot:
-      // <div><slot name="footer" :text="message" /></div>
-      h(
-        "div",
-        slots.footer({
-          text: props.message,
-        })
-      ),
-    ];
-  },
-};
-```
-
-JSX equivalent:
-
-```jsx
-// default
-<div>{slots.default()}</div>
-
-// named
-<div>{slots.footer({ text: props.message })}</div>
-```
-
-</div>
 <div class="options-api">
 
 In render functions, slots can be accessed from [`this.$slots`](/api/component-instance#slots):
@@ -610,19 +493,6 @@ JSX equivalent:
 
 [Built-in components](/api/built-in-components) such as `<KeepAlive>`, `<Transition>`, `<TransitionGroup>`, `<Teleport>` and `<Suspense>` must be imported for use in render functions:
 
-<div class="composition-api">
-
-```js
-import { h, KeepAlive, Teleport, Transition, TransitionGroup } from "vue";
-
-export default {
-  setup() {
-    return () => h(Transition, { mode: "out-in" } /* ... */);
-  },
-};
-```
-
-</div>
 <div class="options-api">
 
 ```js
@@ -641,23 +511,6 @@ export default {
 
 The `v-model` directive is expanded to `modelValue` and `onUpdate:modelValue` props during template compilation—we will have to provide these props ourselves:
 
-<div class="composition-api">
-
-```js
-export default {
-  props: ["modelValue"],
-  emits: ["update:modelValue"],
-  setup(props, { emit }) {
-    return () =>
-      h(SomeComponent, {
-        modelValue: props.modelValue,
-        "onUpdate:modelValue": (value) => emit("update:modelValue", value),
-      });
-  },
-};
-```
-
-</div>
 <div class="options-api">
 
 ```js
@@ -700,43 +553,6 @@ If the directive is registered by name and cannot be imported directly, it can b
 
 ### Template Refs
 
-<div class="composition-api">
-
-With the Composition API, when using [`useTemplateRef()`](/api/composition-api-helpers#usetemplateref) <sup class="vt-badge" data-text="3.5+" /> template refs are created by passing the string value as prop to the vnode:
-
-```js
-import { h, useTemplateRef } from "vue";
-
-export default {
-  setup() {
-    const divEl = useTemplateRef("my-div");
-
-    // <div ref="my-div">
-    return () => h("div", { ref: "my-div" });
-  },
-};
-```
-
-<details>
-<summary>Usage before 3.5</summary>
-
-In versions before 3.5 where useTemplateRef() was not introduced, template refs are created by passing the ref() itself as a prop to the vnode:
-
-```js
-import { h, ref } from "vue";
-
-export default {
-  setup() {
-    const divEl = ref();
-
-    // <div ref="divEl">
-    return () => h("div", { ref: divEl });
-  },
-};
-```
-
-</details>
-</div>
 <div class="options-api">
 
 With the Options API, template refs are created by passing the ref name as a string in the vnode props:
@@ -758,17 +574,6 @@ Functional components are an alternative form of component that don't have any s
 
 To create a functional component we use a plain function, rather than an options object. The function is effectively the `render` function for the component.
 
-<div class="composition-api">
-
-The signature of a functional component is the same as the `setup()` hook:
-
-```js
-function MyComponent(props, { slots, emit, attrs }) {
-  // ...
-}
-```
-
-</div>
 <div class="options-api">
 
 As there is no `this` reference for a functional component, Vue will pass in the `props` as the first argument:

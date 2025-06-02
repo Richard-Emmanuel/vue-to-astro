@@ -1,8 +1,8 @@
 <script setup>
-import Cell from './SpreadSheetCell.vue'
-import { cells } from './spreadSheetStore.js'
+import Cell from "./SpreadSheetCell.vue";
+import { cells } from "./spreadSheetStore.js";
 
-const cols = cells.map((_, i) => String.fromCharCode(65 + i))
+const cols = cells.map((_, i) => String.fromCharCode(65 + i));
 </script>
 
 <template>
