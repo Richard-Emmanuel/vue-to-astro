@@ -18,11 +18,22 @@
 :root {
   --vt-c-bg-mute: #2f2f2f;
   --vt-c-text-1: #e4e4e4;
-  /* --vt-c-text-2: #9b9b9b;
   --vt-c-green: #42b883;
+  /* --vt-c-text-2: #9b9b9b;
+ 
   --vt-c-green-light: #42d392;
   --vt-c-bg-soft: #242424;*/
 }
 .card {
   background-color: var(--vt-c-bg-mute);
+}
+
+.card-border {
+  border: solid;
+  border-radius: 0.7rem;
+  border-color: var(--vt-c-bg-mute);
+}
+mark {
+  background-color: yellow;
+  font-size: 1.5rem;
 }

@@ -19,6 +19,9 @@ Vue offers two built-in components that can help work with transitions and anima
 
 Aside from these two components, we can also apply animations in Vue using other techniques such as toggling CSS classes or state-driven animations via style bindings. These additional techniques are covered in the [Animation Techniques](/guide/extras/animation) chapter.
 
+---
+
+<br />
 ## The `<Transition>` Component
 
 `<Transition>` is a built-in component: this means it is available in any component's template without having to register it. It can be used to apply enter and leave animations on elements or components passed to it via its default slot. The enter or leave can be triggered by one of the following:
@@ -50,14 +53,16 @@ This is an example of the most basic usage:
 }
 ```
 
-<Basic />
-
+<div class= "card-border">
+<Basic client:load />
+</div>
+<br/>
 <div class="options-api">
 
 [Try it in the Playground](https://play.vuejs.org/#eNpVkMFuAiEQhl9lyqlNuouXXrZo2nfwuBeKs0qKQGBAjfHdZZfVrAmB+f/M/2WGK/v1vs0JWcdEVEF72vQWz94Fgh0OMhmCa28BdpLk+0etAQJSCvahAOLBnTqgkLA6t/EpVzmCP7lFEB69kYRFAYi/ROQs/Cij1f+6ZyMG1vA2vj3bbN1+b1Dw2lYj2yBt1KRnXRwPudHDnC6pAxrjBPe1n78EBF8MUGSkixnLNjdoCUMjFemMn5NjUGacnboqPVkdOC+Vpgus2q8IKCN+T+suWENwxyWJXKXMyQ5WNVJ+aBqD3e6VSYoi)
 
 </div>
-
+<br/>
 :::tip
 `<Transition>` only supports a single element or component as its slot content. If the content is a component, the component must also have only one single root element.
 :::
@@ -70,15 +75,20 @@ When an element in a `<Transition>` component is inserted or removed, this is wh
 
 3. If no CSS transitions / animations are detected and no JavaScript hooks are provided, the DOM operations for insertion and/or removal will be executed on the browser's next animation frame.
 
+---
+
+<br />
+
 ## CSS-Based Transitions
 
+<br />
 ### Transition Classes
 
 There are six classes applied for enter / leave transitions.
 
 ![Transition Diagram](./images/transition-classes.png)
 
-{/_ https://www.figma.com/file/rlOv0ZKJFFNA9hYmzdZv3S/Transition-Classes _/}
+{/* {/_ https://www.figma.com/file/rlOv0ZKJFFNA9hYmzdZv3S/Transition-Classes _/} */}
 
 1. `v-enter-from`: Starting state for enter. Added before the element is inserted, removed one frame after the element is inserted.
 
@@ -94,6 +104,7 @@ There are six classes applied for enter / leave transitions.
 
 `v-enter-active` and `v-leave-active` give us the ability to specify different easing curves for enter / leave transitions, which we'll see an example of in the following sections.
 
+<br />
 ### Named Transitions
 
 A transition can be named via the `name` prop:
@@ -118,7 +129,8 @@ For a named transition, its transition classes will be prefixed with its name in
 }
 ```
 
-### CSS Transitions }
+<br />
+### CSS Transitions{" "}
 
 `<Transition>` is most commonly used in combination with [native CSS transitions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions), as seen in the basic example above. The `transition` CSS property is a shorthand that allows us to specify multiple aspects of a transition, including properties that should be animated, duration of the transition, and [easing curves](https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function).
 
@@ -150,14 +162,16 @@ Here is a more advanced example that transitions multiple properties, with diffe
 }
 ```
 
-<SlideFade />
-
+<div class="card-border">
+  <SlideFade client:load />
+</div>
 <div class="options-api">
 
 [Try it in the Playground](https://play.vuejs.org/#eNqFkc1uwjAMgF/F6wk0SmHTJNQFtF32AuOwQy+hdSFamkSJ08EQ776EbMAkJKTIf7I/O/Y+ezVm3HvMyoy52gpDi0rh1mhL0GDLvSTYVwqg4cQHw2QDWCRv1Z8H4Db6qwSyHlPkEFUQ4bHixA0OYWckJ4wesZUn0gpeainqz3mVRQzM4S7qKlss9XotEd6laBDu4Y03yIpUE+oB2NJy5QSJwFC8w0iIuXkbMkN9moUZ6HPR/uJDeINSalaYxCjOkBBgxeWEijnayWiOz+AcFaHNeU2ix7QCOiFK4FLCZPzoALnDXHt6Pq7hP0Ii7/EGYuag9itR5yv8FmgH01EIPkUxG8F0eA2bJmut7kbX+pG+6NVq28WTBTN+92PwMDHbSAXQhteCdiVMUpNwwuMassMP8kfAJQ==)
 
 </div>
 
+<br />
 ### CSS Animations
 
 [Native CSS animations](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations) are applied in the same way as CSS transitions, with the difference being that `*-enter-from` is not removed immediately after the element is inserted, but on an `animationend` event.
@@ -192,14 +206,16 @@ For most CSS animations, we can simply declare them under the `*-enter-active` a
 }
 ```
 
-<CssAnimation />
-
+<div class="card-border">
+<CssAnimation client:load />
+</div>
 <div class="options-api">
 
 [Try it in the Playground](https://play.vuejs.org/#eNqNUs2OwiAQfpWxySZ66I8mXioa97YP4LEXrNNKpEBg2tUY330pqOvJmBBgyPczP1yTb2OyocekTJirrTC0qRSejbYEB2x4LwmulQI4cOLTWbwDWKTeqkcE4I76twSyPcaX23j4zS+WP3V9QNgZyQnHiNi+J9IKtrUU9WldJaMMrGEynlWy2em2lcjyCPMUALazXDlBwtMU79CT9rpXNXp4tGYGhlQ0d7UqAUcXOeI6bluhUtKmhEVhzisgPFPKpWhVCTUqQrt6ygD8oJQajmgRhAOnO4RgdQm8yd0tNzGv/D8x/8Dy10IVCzn4axaTTYNZymsSA8YuciU6PrLL6IKpUFBkS7cKXXwQJfIBPyP6IQ1oHUaB7QkvjfUdcy+wIFB8PeZIYwmNtl0JruYSp8XMk+/TXL7BzbPF8gU6L95hn8D4OUJnktsfM1vavg==)
 
 </div>
 
+<br />
 ### Custom Transition Classes
 
 You can also specify custom transition classes by passing the following props to `<Transition>`:
@@ -230,6 +246,7 @@ These will override the conventional class names. This is especially useful when
 
 </div>
 
+<br />
 ### Using Transitions and Animations Together
 
 Vue needs to attach event listeners in order to know when a transition has ended. It can either be `transitionend` or `animationend`, depending on the type of CSS rules applied. If you are only using one or the other, Vue can automatically detect the correct type.
@@ -240,6 +257,7 @@ However, in some cases you may want to have both on the same element, for exampl
 <Transition type="animation">...</Transition>
 ```
 
+<br />
 ### Nested Transitions and Explicit Transition Durations
 
 Although the transition classes are only applied to the direct child element in `<Transition>`, we can transition nested elements using nested CSS selectors:
@@ -287,8 +305,9 @@ In such cases you can specify an explicit transition duration (in milliseconds) 
 <Transition :duration="550">...</Transition>
 ```
 
-<NestedTransitions />
-
+<div class="card-border">
+  <NestedTransitions client:load />
+</div>
 [Try it in the Playground](https://play.vuejs.org/#eNqVVd9v0zAQ/leO8LAfrE3HNKSFbgKmSYMHQNAHkPLiOtfEm2NHttN2mvq/c7bTNi1jgFop9t13d9995ziPyfumGc5bTLJkbLkRjQOLrm2uciXqRhsHj2BwBiuYGV3DAUEPcpUrrpUlaKUXcOkBh860eJSrcRqzUDxtHNaNZA5pBzCets5pBe+4FPz+Mk+66Bf+mSdXE12WEsdphMWQiWHKCicoLCtaw/yKIs/PR3kCitVIG4XWYUEJfATFFGIO84GYdRUIyCWzlra6dWg2wA66dgqlts7c+d8tSqk34JTQ6xqb9TjdUiTDOO21TFvrHqRfDkPpExiGKvBITjdl/L40ulVFBi8R8a3P17CiEKrM4GzULIOlFmpQoSgrl8HpKFpX3kFZu2y0BNhJxznvwaJCA1TEYcC4E3MkKp1VIptjZ43E3KajDJiUMBqeWUBmcUBUqJGYOT2GAiV7gJAA9Iy4GyoBKLH2z+N0W3q/CMC2yCCkyajM63Mbc+9z9mfvZD+b071MM23qLC69+j8PvX5HQUDdMC6cL7BOTtQXCJwpas/qHhWIBdYtWGgtDWNttWTmThu701pf1W6+v1Hd8Xbz+k+VQxmv8i7Fv1HZn+g/iv2nRkjzbd6npf/Rkz49DifQ3dLZBBYOJzC4rqgCwsUbmLYlCAUVU4XsCd1NrCeRHcYXb1IJC/RX2hEYCwJTvHYVMZoavbBI09FmU+LiFSzIh0AIXy1mqZiFKaKCmVhiEVJ7GftHZTganUZ56EYLL3FykjhL195MlMM7qxXdmEGDPOG6boRE86UJVPMki+p4H01WLz4Fm78hSdBo5xXy+yfsd3bpbXny1SA1M8c82fgcMyW66L75/hmXtN44a120ktDPOL+h1bL1HCPsA42DaPdwge3HcO/TOCb2ZumQJtA15Yl65Crg84S+BdfPtL6lezY8C3GkZ7L6Bc1zNR0=)
 
 If necessary, you can also specify separate values for enter and leave durations using an object:
@@ -297,6 +316,7 @@ If necessary, you can also specify separate values for enter and leave durations
 <Transition :duration="{ enter: 500, leave: 800 }">...</Transition>
 ```
 
+<br />
 ### Performance Considerations
 
 You may notice that the animations shown above are mostly using properties like `transform` and `opacity`. These properties are efficient to animate because:
@@ -307,6 +327,9 @@ You may notice that the animations shown above are mostly using properties like 
 
 In comparison, properties like `height` or `margin` will trigger CSS layout, so they are much more expensive to animate, and should be used with caution.
 
+---
+
+<br />
 ## JavaScript Hooks
 
 You can hook into the transition process with JavaScript by listening to events on the `<Transition>` component:
@@ -378,7 +401,7 @@ These hooks can be used in combination with CSS transitions / animations or on t
 
 When using JavaScript-only transitions, it is usually a good idea to add the `:css="false"` prop. This explicitly tells Vue to skip auto CSS transition detection. Aside from being slightly more performant, this also prevents CSS rules from accidentally interfering with the transition:
 
-```vue-html
+```vue-html {3}
 <Transition
   ...
   :css="false"
@@ -391,14 +414,18 @@ With `:css="false"`, we are also fully responsible for controlling when the tran
 
 Here's a demo using the [GSAP library](https://gsap.com/) to perform the animations. You can, of course, use any other animation library you want, for example [Anime.js](https://animejs.com/) or [Motion One](https://motion.dev/):
 
-<JsHooks />
-
+<div class="card-border">
+<JsHooks client:load />
+</div>
 <div class="options-api">
 
 [Try it in the Playground](https://play.vuejs.org/#eNqNVFFvmzAQ/is3pimNlABNF61iaddt2tukvfRhk/xiwIAXsJF9pKmq/PedDTSwh7ZSFLjvzvd9/nz4KfjatuGhE0ES7GxmZIu3TMmm1QahtLyFwugGFu51wRQAU+Lok7koeFcjPDk058gvlv07gBHYGTVGALbSDwmg6USPnNzjtHL/jcBK5zZxxQwZavVNFNqIHwqF8RUAWs2jn4IffCfqQz+mik5lKLWi3GT1hagHRU58aAUSshpV2YzX4ncCcbjZDp099GcG6ZZnEh8TuPR8S0/oTJhQjmQryLUSU0rUU8a8M9wtoWZTQtIwi0nAGJ/ZB0BwKxJYiJpblFko1a8OLzbhdgWXy8WzP99109YCqdIJmgifyfYuzmUzfFF2HH56o/BjAldx/BbRo7pXHKMjGbrl1IcciWn9fyaNfC8YsIueR5wCFFTGUVAEsEs7pOmDu6yW2f6GBW5o4QbeuScLbu91WdZiF/VlvgEtujdcWek09tx3qZ+/tXAzQU1mA8mCoeicneO1OxKP9yM+4ElmLaEFr+2AecVEn8sDZOSrSzv/1qk+sgAOa1kMOyDlu4jK+j1GZ70E7KKJAxRafKzdazi26s8h5dm+NLpTeQLvP27S6+urz/7T5aaUao26TWATt0cPPsgcK3f6Q1wJWVY4AVJtcmHWhueyo89+G38guD+agT5YBf39s25oIv5arehu8krYkLAs8BeG86DfuANYUCG2NomiTrX7Msx0E7ncl0bnXT04566M4PQPykWaWw==)
 
 </div>
 
+---
+
+<br />
 ## Reusable Transitions
 
 Transitions can be reused through Vue's component system. To create a reusable transition, we can create a component that wraps the `<Transition>` component and passes down the slot content:
@@ -434,6 +461,9 @@ Now `MyTransition` can be imported and used just like the built-in version:
 </MyTransition>
 ```
 
+---
+
+<br />
 ## Transition on Appear
 
 If you also want to apply a transition on the initial render of a node, you can add the `appear` prop:
@@ -444,6 +474,9 @@ If you also want to apply a transition on the initial render of a node, you can 
 </Transition>
 ```
 
+---
+
+<br />
 ## Transition Between Elements
 
 In addition to toggling an element with `v-if` / `v-show`, we can also transition between two elements using `v-if` / `v-else` / `v-else-if`, as long as we make sure that there is only one element being shown at any given moment:
@@ -456,11 +489,15 @@ In addition to toggling an element with `v-if` / `v-show`, we can also transitio
 </Transition>
 ```
 
-<BetweenElements />
-
+<div class="card-border">
+  <BetweenElements client:load />
+</div>
 [Try it in the Playground](https://play.vuejs.org/#eNqdk8tu2zAQRX9loI0SoLLcFN2ostEi6BekmwLa0NTYJkKRBDkSYhj+9wxJO3ZegBGu+Lhz7syQ3Bd/nJtNIxZN0QbplSMISKNbdkYNznqCPXhcwwHW3g5QsrTsTGekNYGgt/KBBCEsouimDGLCvrztTFtnGGN4QTg4zbK4ojY4YSDQTuOiKwbhN8pUXm221MDd3D11xfJeK/kIZEHupEagrbfjZssxzAgNs5nALIC2VxNILUJg1IpMxWmRUAY9U6IZ2/3zwgRFyhowYoieQaseq9ElDaTRrkYiVkyVWrPiXNdiAcequuIkPo3fMub5Sg4l9oqSevmXZ22dwR8YoQ74kdsL4Go7ZTbR74HT/KJfJlxleGrG8l4YifqNYVuf251vqOYr4llbXz4C06b75+ns1a3BPsb0KrBy14Aymnerlbby8Vc8cTajG35uzFITpu0t5ufzHQdeH6LBsezEO0eJVbB6pBiVVLPTU6jQEPpKyMj8dnmgkQs+HmQcvVTIQK1hPrv7GQAFt9eO9Bk6fZ8Ub52Qiri8eUo+4dbWD02exh79v/nBP+H2PStnwz/jelJ1geKvk/peHJ4BoRZYow==)
 
-## Transition Modes }
+---
+
+<br />
+## Transition Modes
 
 In the previous example, the entering and leaving elements are animated at the same time, and we had to make them `position: absolute` to avoid the layout issue when both elements are present in the DOM.
 
@@ -474,10 +511,15 @@ However, in some cases this isn't an option, or simply isn't the desired behavio
 
 Here's the previous demo with `mode="out-in"`:
 
-<BetweenElements mode="out-in" />
+<div class="card-border">
+  <BetweenElements mode="out-in" client:load />
+</div>
 
 `<Transition>` also supports `mode="in-out"`, although it's much less frequently used.
 
+---
+
+<br />
 ## Transition Between Components
 
 `<Transition>` can also be used around [dynamic components](/guide/essentials/component-basics#dynamic-components):
@@ -488,14 +530,18 @@ Here's the previous demo with `mode="out-in"`:
 </Transition>
 ```
 
-<BetweenComponents />
-
+<div class="card-border">
+<BetweenComponents client:load />
+</div>
 <div class="options-api">
 
 [Try it in the Playground](https://play.vuejs.org/#eNqtks9ugzAMxl/F4tJNamGXXVhWqewVduSSgStFCkkUDFpV9d0XJyn9t8MOkxBg5/Pvi+Mci51z5TxhURdi7LxytG2NGpz1BB92cDvYezvAqqxixNLVjaC5ETRZ0Br8jpIe93LSBMfWAHRBYQ0aGms4Jvw6Q05rFvSS5NNzEgN4pMmbcwQgO1Izsj5CalhFRLDj1RN/wis8olpaCQHh4LQk5IiEll+owy+XCGXcREAHh+9t4WWvbFvAvBlsjzpk7gx5TeqJtdG4LbawY5KoLtR/NGjYoHkw+PTSjIqUNWDkwOK97DHUMjVEdqKNMqE272E5dajV+JvpVlSLJllUF4+QENX1ERox0kHzb8m+m1CEfpOgYYgpqVHOmJNpgLQQa7BOdooO8FK+joByxLc4tlsiX6s7HtnEyvU1vKTCMO+4pWKdBnO+0FfbDk31as5HsvR+Hl9auuozk+J1/hspz+mRdPoBYtonzg==)
 
 </div>
 
+---
+
+<br />
 ## Dynamic Transitions
 
 `<Transition>` props like `name` can also be dynamic! It allows us to dynamically apply different transitions based on state change:
@@ -510,6 +556,9 @@ This can be useful when you've defined CSS transitions / animations using Vue's 
 
 You can also apply different behavior in JavaScript transition hooks based on the current state of your component. Finally, the ultimate way of creating dynamic transitions is through [reusable transition components](#reusable-transitions) that accept props to change the nature of the transition(s) to be used. It may sound cheesy, but the only limit really is your imagination.
 
+---
+
+<br />
 ## Transitions with the Key Attribute
 
 Sometimes you need to force the re-render of a DOM element in order for a transition to occur.

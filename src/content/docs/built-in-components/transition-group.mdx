@@ -7,9 +7,11 @@ import ListBasic from "./transition-demos/ListBasic.vue";
 import ListMove from "./transition-demos/ListMove.vue";
 import ListStagger from "./transition-demos/ListStagger.vue";
 
-# TransitionGroup
-
 `<TransitionGroup>` is a built-in component designed for animating the insertion, removal, and order change of elements or components that are rendered in a list.
+
+---
+
+<br />
 
 ## Differences from `<Transition>`
 
@@ -27,6 +29,9 @@ import ListStagger from "./transition-demos/ListStagger.vue";
 When used in [in-DOM templates](/guide/essentials/component-basics#in-dom-template-parsing-caveats), it should be referenced as `<transition-group>`.
 :::
 
+---
+
+<br />
 ## Enter / Leave Transitions
 
 Here is an example of applying enter / leave transitions to a `v-for` list using `<TransitionGroup>`:
@@ -51,8 +56,12 @@ Here is an example of applying enter / leave transitions to a `v-for` list using
 }
 ```
 
-<ListBasic />
+<div class="card-border">
+  <ListBasic client:load />
+</div>
+---
 
+<br />
 ## Move Transitions
 
 The above demo has some obvious flaws: when an item is inserted or removed, its surrounding items instantly "jump" into place instead of moving smoothly. We can fix this by adding a few additional CSS rules:
@@ -79,13 +88,19 @@ The above demo has some obvious flaws: when an item is inserted or removed, its 
 
 Now it looks much better - even animating smoothly when the whole list is shuffled:
 
-<ListMove />
-
+<div class="card-border">
+  <ListMove client:load />
+</div>
 [Full Example](/examples/#list-transition)
 
+<br />
 ### Custom TransitionGroup classes
 
 You can also specify custom transition classes for the moving element by passing the `moveClass` prop to `<TransitionGroup>`, just like [custom transition classes on `<Transition>`](/guide/built-ins/transition.html#custom-transition-classes).
+
+---
+
+<br />
 
 ## Staggering List Transitions
 
@@ -122,7 +137,9 @@ function onEnter(el, done) {
 }
 ```
 
-<ListStagger />
+<div class="card-border card2">
+  <ListStagger client:load />
+</div>
 
 <div class="options-api">
 
