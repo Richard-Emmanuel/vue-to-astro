@@ -9,6 +9,9 @@ Ready to start but aren’t sure where?
 
 Checkout the [Planning and managing web accessibility guide](https://www.w3.org/WAI/planning-and-managing/) provided by [World Wide Web Consortium (W3C)](https://www.w3.org/)
 
+---
+
+<br />
 ## Skip link
 
 You should add a link at the top of each page that goes directly to the main content area so users can skip content that is repeated on multiple Web pages.
@@ -67,10 +70,14 @@ export default {
 
 [Read documentation on skip link to main content](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
 
+---
+
+<br />
 ## Content Structure}
 
 One of the most important pieces of accessibility is making sure that design can support accessible implementation. Design should consider not only color contrast, font selection, text sizing, and language, but also how the content is structured in the application.
 
+<br />
 ### Headings
 
 Users can navigate an application through headings. Having descriptive headings for every section of your application makes it easier for users to predict the content of each section. When it comes to headings, there are a couple of recommended accessibility practices:
@@ -99,6 +106,7 @@ Users can navigate an application through headings. Having descriptive headings 
 </main>
 ```
 
+<br />
 ### Landmarks
 
 [Landmarks](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role) provide programmatic access to sections within an application. Users who rely on assistive technology can navigate to each section of the application and skip over content. You can use [ARIA roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles) to help you achieve this.
@@ -116,6 +124,9 @@ Users can navigate an application through headings. Having descriptive headings 
 
 [Read more about landmarks](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
 
+---
+
+<br />
 ## Semantic Forms
 
 When creating a form, you can use the following elements: `<form>`, `<label>`, `<input>`, `<textarea>`, and `<button>`
@@ -139,6 +150,7 @@ Labels are typically placed on top or to the left of the form fields:
 
 Notice how you can include `autocomplete='on'` on the form element and it will apply to all inputs in your form. You can also set different [values for autocomplete attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) for each input.
 
+<br />
 ### Labels
 
 Provide labels to describe the purpose of all form control; linking `for` and `id`:
@@ -152,7 +164,7 @@ If you inspect this element in your Chrome DevTools and open the Accessibility t
 
 ![Chrome Developer Tools showing input accessible name from label](./images/AccessibleLabelChromeDevTools.png)
 
-:::warning Warning:
+:::caution[Warning:]
 Though you might have seen labels wrapping the input fields like this:
 
 ```vue-html
@@ -244,6 +256,7 @@ You can see the description by inspecting Chrome DevTools:
 
 ![Chrome Developer Tools showing input accessible name from aria-labelledby and description with aria-describedby](./images/AccessibleARIAdescribedby.png)
 
+<br />
 ### Placeholder
 
 Avoid using placeholders as they can confuse many users.
@@ -295,6 +308,7 @@ One of the issues with placeholders is that they don't meet the [color contrast 
 
 It is best to provide all the information the user needs to fill out forms outside any inputs.
 
+<br />
 ### Instructions
 
 When adding instructions for your input fields, make sure to link it correctly to the input.
@@ -325,6 +339,7 @@ Alternatively, you can attach the instructions to the input with [`aria-describe
 </fieldset>
 ```
 
+<br />
 ### Hiding Content
 
 Usually it is not recommended to visually hide labels, even if the input has an accessible name. However, if the functionality of the input can be understood with surrounding content, then we can hide the visual label.
@@ -366,6 +381,7 @@ Adding `aria-hidden="true"` will hide the element from assistive technology but 
 <p aria-hidden="true">This is hidden from screen readers.</p>
 ```
 
+<br />
 ### Buttons
 
 When using buttons inside a form, you must set the type to prevent submitting the form.
@@ -383,6 +399,7 @@ You can also use an input to create buttons:
 </form>
 ```
 
+<br />
 ### Functional Images
 
 You can use this technique to create functional images.
@@ -417,6 +434,9 @@ You can use this technique to create functional images.
 </form>
 ```
 
+---
+
+<br />
 ## Standards
 
 The World Wide Web Consortium (W3C) Web Accessibility Initiative (WAI) develops web accessibility standards for the different components:
@@ -428,6 +448,7 @@ The World Wide Web Consortium (W3C) Web Accessibility Initiative (WAI) develops 
 - [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/)
   - web content - used by developers, authoring tools, and accessibility evaluation tools
 
+<br />
 ### Web Content Accessibility Guidelines (WCAG)
 
 [WCAG 2.1](https://www.w3.org/TR/WCAG21/) extends on [WCAG 2.0](https://www.w3.org/TR/WCAG20/) and allows implementation of new technologies by addressing changes to the web. The W3C encourages use of the most current version of WCAG when developing or updating Web accessibility policies.
@@ -450,14 +471,19 @@ W3C's WAI-ARIA provides guidance on how to build dynamic content and advanced us
 - [Accessible Rich Internet Applications (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/)
 - [WAI-ARIA Authoring Practices 1.2](https://www.w3.org/TR/wai-aria-practices-1.2/)
 
-## Resources
+---
 
+<br />
+## Resources
+<br />
 ### Documentation
 
 - [WCAG 2.0](https://www.w3.org/TR/WCAG20/)
 - [WCAG 2.1](https://www.w3.org/TR/WCAG21/)
 - [Accessible Rich Internet Applications (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/)
 - [WAI-ARIA Authoring Practices 1.2](https://www.w3.org/TR/wai-aria-practices-1.2/)
+
+<br />
 
 ### Assistive Technologies
 
@@ -471,6 +497,9 @@ W3C's WAI-ARIA provides guidance on how to build dynamic content and advanced us
   - [ZoomText](https://www.freedomscientific.com/products/software/zoomtext/)
   - [Magnifier](https://support.microsoft.com/en-us/help/11542/windows-use-magnifier-to-make-things-easier-to-see)
 
+---
+
+<br />
 ### Testing
 
 - Automated Tools
@@ -487,6 +516,7 @@ W3C's WAI-ARIA provides guidance on how to build dynamic content and advanced us
   - [Visual Aria](https://chrome.google.com/webstore/detail/visual-aria/lhbmajchkkmakajkjenkchhnhbadmhmk?hl=en-US)
   - [Silktide Website Accessibility Simulator](https://chrome.google.com/webstore/detail/silktide-website-accessib/okcpiimdfkpkjcbihbmhppldhiebhhaf?hl=en-US)
 
+<br />
 ### Users
 
 The World Health Organization estimates that 15% of the world's population has some form of disability, 2-4% of them severely so. That is an estimated 1 billion people worldwide; making people with disabilities the largest minority group in the world.

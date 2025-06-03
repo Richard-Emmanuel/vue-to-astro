@@ -3,6 +3,8 @@ title: Product Deployment
 description: Learn how to deploy your Vue applications effectively, ensuring reliability and scalability in production environments.
 ---
 
+---
+
 ## Development vs. Production
 
 During development, Vue provides a number of features to improve the development experience:
@@ -14,6 +16,10 @@ During development, Vue provides a number of features to improve the development
 
 However, these features become useless in production. Some of the warning checks can also incur a small amount of performance overhead. When deploying to production, we should drop all the unused, development-only code branches for smaller payload size and better performance.
 
+---
+
+<br />
+
 ## Without Build Tools
 
 If you are using Vue without a build tool by loading it from a CDN or self-hosted script, make sure to use the production build (dist files that end in `.prod.js`) when deploying to production. Production builds are pre-minified with all development-only code branches removed.
@@ -22,6 +28,10 @@ If you are using Vue without a build tool by loading it from a CDN or self-hoste
 - If using ESM build (accessing via native ESM imports): use `vue.esm-browser.prod.js`.
 
 Consult the [dist file guide](https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use) for more details.
+
+---
+
+<br />
 
 ## With Build Tools
 
@@ -38,6 +48,10 @@ Additional references:
 - [Vite production build guide](https://vitejs.dev/guide/build.html)
 - [Vite deployment guide](https://vitejs.dev/guide/static-deploy.html)
 - [Vue CLI deployment guide](https://cli.vuejs.org/guide/deployment.html)
+
+---
+
+<br />
 
 ## Tracking Runtime Errors
 

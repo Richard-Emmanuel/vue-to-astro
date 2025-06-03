@@ -3,6 +3,8 @@ title: Routing
 description: Learn how to implement routing in your Vue applications using Vue Router.
 ---
 
+---
+
 import VueSchoolLink from "/src/components/VueSchoolLink.vue";
 
 ## Client-Side vs. Server-Side Routing
@@ -13,6 +15,9 @@ In a [Single-Page Application](https://developer.mozilla.org/en-US/docs/Glossary
 
 In such SPAs, the "routing" is done on the client side, in the browser. A client-side router is responsible for managing the application's rendered view using browser APIs such as [History API](https://developer.mozilla.org/en-US/docs/Web/API/History) or the [`hashchange` event](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event).
 
+---
+
+<br />
 ## Official Router
 
 {/* TODO update links */}
@@ -28,6 +33,9 @@ In such SPAs, the "routing" is done on the client side, in the browser. A client
 
 Vue is well-suited for building SPAs. For most SPAs, it's recommended to use the officially-supported [Vue Router library](https://github.com/vuejs/router). For more details, see Vue Router's [documentation](https://router.vuejs.org/).
 
+---
+
+<br />
 ## Simple Routing from Scratch
 
 If you only need very simple routing and do not wish to involve a full-featured router library, you can do so with [Dynamic Components](/guide/essentials/component-basics#dynamic-components) and update the current component state by listening to browser [`hashchange` events](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event) or using the [History API](https://developer.mozilla.org/en-US/docs/Web/API/History).

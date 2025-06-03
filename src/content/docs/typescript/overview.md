@@ -7,12 +7,17 @@ A type system like TypeScript can detect many common errors via static analysis 
 
 Vue is written in TypeScript itself and provides first-class TypeScript support. All official Vue packages come with bundled type declarations that should work out-of-the-box.
 
+---
+
+<br/>
+
 ## Project Setup
 
 [`create-vue`](https://github.com/vuejs/create-vue), the official project scaffolding tool, offers the options to scaffold a [Vite](https://vitejs.dev/)-powered, TypeScript-ready Vue project.
 
 ### Overview
 
+<br/>
 With a Vite-based setup, the dev server and the bundler are transpilation-only and do not perform any type-checking. This ensures the Vite dev server stays blazing fast even when using TypeScript.
 
 - During development, we recommend relying on a good [IDE setup](#ide-support) for instant feedback on type errors.
@@ -20,6 +25,8 @@ With a Vite-based setup, the dev server and the bundler are transpilation-only a
 - If using SFCs, use the [`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/tsc) utility for command line type checking and type declaration generation. `vue-tsc` is a wrapper around `tsc`, TypeScript's own command line interface. It works largely the same as `tsc` except that it supports Vue SFCs in addition to TypeScript files. You can run `vue-tsc` in watch mode in parallel to the Vite dev server, or use a Vite plugin like [vite-plugin-checker](https://vite-plugin-checker.netlify.app/) which runs the checks in a separate worker thread.
 
 - Vue CLI also provides TypeScript support, but is no longer recommended. See [notes below](#note-on-vue-cli-and-ts-loader).
+
+<br/>
 
 ### IDE Support
 
@@ -32,6 +39,8 @@ With a Vite-based setup, the dev server and the bundler are transpilation-only a
     :::
 
 - [WebStorm](https://www.jetbrains.com/webstorm/) also provides out-of-the-box support for both TypeScript and Vue. Other JetBrains IDEs support them too, either out of the box or via [a free plugin](https://plugins.jetbrains.com/plugin/9442-vue-js). As of version 2023.2, WebStorm and the Vue Plugin come with built-in support for the Vue Language Server. You can set the Vue service to use Volar integration on all TypeScript versions, under Settings > Languages & Frameworks > TypeScript > Vue. By default, Volar will be used for TypeScript versions 5.0 and higher.
+
+<br/>
 
 ### Configuring `tsconfig.json`
 
@@ -52,6 +61,8 @@ See also:
 - [Official TypeScript compiler options docs](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
 - [esbuild TypeScript compilation caveats](https://esbuild.github.io/content-types/#typescript-caveats)
 
+<br/>
+
 ### Note on Vue CLI and `ts-loader`
 
 In webpack-based setups such as Vue CLI, it is common to perform type checking as part of the module transform pipeline, for example with `ts-loader`. This, however, isn't a clean solution because the type system needs knowledge of the entire module graph to perform type checks. Individual module's transform step simply is not the right place for the task. It leads to the following problems:
@@ -64,7 +75,13 @@ In webpack-based setups such as Vue CLI, it is common to perform type checking a
 
 If you are currently using Vue 3 + TypeScript via Vue CLI, we strongly recommend migrating over to Vite. We are also working on CLI options to enable transpile-only TS support, so that you can switch to `vue-tsc` for type checking.
 
+---
+
+<br/>
+
 ## General Usage Notes
+
+<br/>
 
 ### `defineComponent()`
 
@@ -117,6 +134,7 @@ See also:
 `defineComponent()` also enables type inference for components defined in plain JavaScript.
 :::
 
+<br/>
 ### Usage in Single-File Components
 
 To use TypeScript in SFCs, add the `lang="ts"` attribute to `<script>` tags. When `lang="ts"` is present, all template expressions also enjoy stricter type checking.
@@ -156,6 +174,8 @@ const count = ref(1);
 </template>
 ```
 
+<br/>
+
 ### TypeScript in Templates
 
 The `<template>` also supports TypeScript in binding expressions when `<script lang="ts">` or `<script setup lang="ts">` is used. This is useful in cases where you need to perform type casting in template expressions.
@@ -189,9 +209,15 @@ let x: string | number = 1;
 If using Vue CLI or a webpack-based setup, TypeScript in template expressions requires `vue-loader@^16.8.0`.
 :::
 
+<br/>
+
 ### Usage with TSX
 
 Vue also supports authoring components with JSX / TSX. Details are covered in the [Render Function & JSX](/guide/extras/render-function.html#jsx-tsx) guide.
+
+---
+
+<br/>
 
 ## Generic Components
 
@@ -199,6 +225,10 @@ Generic components are supported in two cases:
 
 - In SFCs: [`<script setup>` with the `generic` attribute](/api/sfc-script-setup.html#generics)
 - Render function / JSX components: [`defineComponent()`'s function signature](/api/general.html#function-signature)
+
+---
+
+<br/>
 
 ## API-Specific Recipes
 

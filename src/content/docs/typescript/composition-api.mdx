@@ -3,11 +3,18 @@ title: TypeScript with Composition API
 description: TypeScript with Composition API
 ---
 
+import VueSchoolLink from "/src/components/VueSchoolLink.vue";
+
+<VueSchoolLink
+  href="https://scrimba.com/links/vue-ts-composition-api"
+  title="Watch an interactive video lesson on Scrimba"
+/>
+
 > This page assumes you've already read the overview on [Using Vue with TypeScript](./overview).
 
 ## Typing Component Props
 
-</br>
+<br />
 ### Using `<script setup>`
 
 When using `<script setup>`, the `defineProps()` macro supports inferring the props types based on its argument:
@@ -103,6 +110,7 @@ This will be compiled to equivalent runtime props `default` options. In addition
 Note that default values for mutable reference types (like arrays or objects) should be wrapped in functions when using `withDefaults` to avoid accidental modification and external side effects. This ensures each component instance gets its own copy of the default value. This is **not** necessary when using default values with destructure.
 :::
 
+<br/>
 ### Without `<script setup>`
 
 If not using `<script setup>`, it is necessary to use `defineComponent()` to enable props type inference. The type of the props object passed to `setup()` is inferred from the `props` option.
@@ -119,7 +127,7 @@ export default defineComponent({
   },
 });
 ```
-
+<br/>
 ### Complex prop types
 
 With type-based declaration, a prop can use a complex type much like any other type:
@@ -163,6 +171,8 @@ export default defineComponent({
 
 The `props` option is more commonly used with the Options API, so you'll find more detailed examples in the guide to [TypeScript with Options API](/guide/typescript/options-api#typing-component-props). The techniques shown in those examples also apply to runtime declarations using `defineProps()`.
 
+---
+<br/>
 ## Typing Component Emits
 
 In `<script setup>`, the `emit` function can also be typed using either runtime declaration OR type declaration:
@@ -217,6 +227,8 @@ export default defineComponent({
   },
 });
 ```
+---
+<br/>
 
 ## Typing `ref()`
 
@@ -258,6 +270,8 @@ If you specify a generic type argument but omit the initial value, the resulting
 // inferred type: Ref<number | undefined>
 const n = ref<number>();
 ```
+---
+<br/>
 
 ## Typing `reactive()`
 
@@ -287,6 +301,9 @@ const book: Book = reactive({ title: "Vue 3 Guide" });
 It's not recommended to use the generic argument of `reactive()` because the returned type, which handles nested ref unwrapping, is different from the generic argument type.
 :::
 
+---
+<br/>
+
 ## Typing `computed()`
 
 `computed()` infers its type based on the getter's return value:
@@ -310,6 +327,8 @@ const double = computed<number>(() => {
   // type error if this doesn't return a number
 });
 ```
+---
+<br/>
 
 ## Typing Event Handlers
 
@@ -335,6 +354,8 @@ function handleChange(event: Event) {
   console.log((event.target as HTMLInputElement).value);
 }
 ```
+---
+<br/>
 
 ## Typing Provide / Inject
 
@@ -372,6 +393,8 @@ If you are sure that the value is always provided, you can also force cast the v
 ```ts
 const foo = inject("foo") as string;
 ```
+---
+<br/>
 
 ## Typing Template Refs
 
@@ -409,6 +432,9 @@ onMounted(() => {
 To get the right DOM interface you can check pages like [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#technical_summary).
 
 Note that for strict type safety, it is necessary to use optional chaining or type guards when accessing `el.value`. This is because the initial ref value is `null` until the component is mounted, and it can also be set to `null` if the referenced element is unmounted by `v-if`.
+
+---
+<br/>
 
 ## Typing Component Template Refs
 
